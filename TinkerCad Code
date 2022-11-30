@@ -1,0 +1,104 @@
+#include <Servo.h>
+
+int ports[6] = {3, 5, 6, 9, 10, 11};
+int level = 0;
+int idx = 0;
+int pos = 0;
+Servo servo_2;
+
+void setup(){
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  Serial.begin(9600);
+  servo_2.attach(2, 500, 2500);
+}
+
+void loop(){
+  Serial.println(analogRead(A0));
+  Serial.println(analogRead(A5));
+  delay(50);
+  
+  if (analogRead(A0)<400){
+    analogWrite(ports[idx], level);
+    delay(10);
+    ++level %= 255;
+    ++idx %= 6;
+  } else {
+    digitalWrite(ports[idx], 0);
+  }
+  
+  if(analogRead(A0)<800){
+    for (int brightness = 0; brightness <= 255; brightness += 10) {
+    analogWrite(3, brightness);
+    delay(30); 
+    }
+    for (int brightness = 255; brightness >= 0; brightness -= 10) {
+      analogWrite(3, brightness);
+      delay(30); 
+    }
+
+    for (int brightness = 0; brightness <= 255; brightness += 10) {
+      analogWrite(5, brightness);
+      delay(30); 
+    }
+    for (int brightness = 255; brightness >= 0; brightness -= 10) {
+      analogWrite(5, brightness);
+      delay(30); 
+    } 
+    
+    for (int brightness = 0; brightness <= 255; brightness += 10) {
+      analogWrite(6, brightness);
+      delay(30); 
+    }
+    for (int brightness = 255; brightness >= 0; brightness -= 10) {
+      analogWrite(6, brightness);
+      delay(30); 
+    } 
+    
+    for (int brightness = 0; brightness <= 255; brightness += 10) {
+      analogWrite(9, brightness);
+      delay(30); 
+    }
+    for (int brightness = 255; brightness >= 0; brightness -= 10) {
+      analogWrite(9, brightness);
+      delay(30); 
+    } 
+    
+    for (int brightness = 0; brightness <= 255; brightness += 10) {
+      analogWrite(10, brightness);
+      delay(30); 
+    }
+    for (int brightness = 255; brightness >= 0; brightness -= 10) {
+      analogWrite(10, brightness);
+      delay(30); 
+    } 
+    
+    for (int brightness = 0; brightness <= 255; brightness += 10) {
+      analogWrite(11, brightness);
+      delay(30); 
+    }
+    for (int brightness = 255; brightness >= 0; brightness -= 10) {
+      analogWrite(11, brightness);
+      delay(30); 
+    } 
+  }
+  
+  if (analogRead(A5)<500){
+    // sweep the servo from 0 to 180 degrees in steps of 1 degrees
+    for (pos = 0; pos <= 180; pos += 1) {
+      servo_2.write(pos);
+      delay(50);
+    }
+    for (pos = 180; pos >= 0; pos -= 1) {
+      servo_2.write(pos);
+      delay(50);
+    }
+  }
+}
+
+
