@@ -1,0 +1,96 @@
+During week 9, I wanted to try the MPR121. So I link them together.
+
+
+
+#include <Wire.h>
+#include "Adafruit_MPR121.h"
+
+#ifndef _BV
+#define _BV(bit) (1 << (bit))
+#endif
+
+#include <Servo.h>
+
+Servo myservo;
+
+int pos = 0;
+int ports[6] = {5, 6, 9, 10, 11, 13};
+int level = 0;
+int idx = 0;
+
+// You can have up to 4 on one i2c bus but one is enough for testing!
+Adafruit_MPR121 cap = Adafruit_MPR121();
+
+// Keeps track of the last pins touched, so we know when buttons are 'released'
+uint16_t lasttouched = 0;
+uint16_t currtouched = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(13, OUTPUT);
+  myservo.attach(A5);
+
+
+  Serial.println("Adafruit MPR121 Capacitive Touch sensor test");
+
+  // Default address is 0x5A, if tied to 3.3V its 0x5B
+  // If tied to SDA its 0x5C and if SCL then 0x5D
+  if (!cap.begin(0x5A)) {
+    Serial.println("MPR121 not found, check wiring?");
+    while (1);
+  }
+  Serial.println("MPR121 found!");
+}
+
+
+void loop() {
+  // Get the currently touched pads
+  currtouched = cap.touched();
+
+  Serial.println(analogRead(A0));
+  if (analogRead(A0) > 700) {
+    analogWrite(ports[idx], level);
+    //delay(100);
+    ++level %= 25;
+    ++idx %= 6;
+  } else {
+    digitalWrite(ports[idx], 0);
+  }
+
+
+
+  for (uint8_t i = 0; i < 12; i++) {
+    // it if *is* touched and *wasnt* touched before, alert!
+    if ((currtouched & _BV(i)) && !(lasttouched & _BV(i)) ) {
+      Serial.print(i); Serial.println(" touched");
+      for (pos = 0; pos <= 180; pos += 2) { // goes from 0 degrees to 180 degrees
+        // in steps of 1 degree
+        myservo.write(pos);              // tell servo to go to position in variable 'pos'
+        delay(15);
+      }
+    }
+    // if it *was* touched and now *isnt*, alert!
+    if (!(currtouched & _BV(i)) && (lasttouched & _BV(i)) ) {
+      Serial.print(i); Serial.println(" released");
+      for (pos = 180; pos >= 0; pos -= 2) { // goes from 180 degrees to 0 degrees
+        myservo.write(pos);              // tell servo to go to position in variable 'pos'
+        delay(15);                       // waits 15 ms for the servo to reach the position
+      }
+    }
+  }
+
+  // reset our state
+  lasttouched = currtouched;
+
+  // comment out this line for detailed data from the sensor!
+  return;
+
+  // put a delay so it isn't overwhelming
+  //delay(100);
+
+}
