@@ -70,10 +70,10 @@ void loop() {
     }  
     delay(100);  
     }  
-
-    if (analogRead (A0) > 1020){  
+    
+  if (analogRead (A0) > 1020){  
       digitalWrite(11, LOW);  
-    }  
+  }  
 
 
   lasttouched = currtouched;  
