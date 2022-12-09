@@ -1,5 +1,5 @@
 # Creative-Making  
-Final code in arduino:  
+Final code in Arduino:  
 
 #include <Wire.h>  
 #include "Adafruit_MPR121.h"  
@@ -66,7 +66,7 @@ void loop() {
     analogWrite(5, brightness);  
     brightness = brightness + fadeAmount;  
     if (brightness <= 0 || brightness >= 255) {  
-      fadeAmount = -fadeAmount;  
+    fadeAmount = -fadeAmount;  
     }  
     delay(100);  
     }  
