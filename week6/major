@@ -1,3 +1,74 @@
 During this week I drafted the first version of my final plan. I thought about the inspiration and the theme, I also used breadboard to test different 
 color of LEDs.
 
+
+
+CM final plan v1
+
+Introduction: Making a machine that measures and displays the state of plants
+
+
+Video recording
+distance sensor + processing, processing projection gradient **lighting**, distance leads to changes in colour, different sounds emitted; simulates the movement of the plant
+Light effects: change of shape, processing automatically generates changing visual effects, projector, green light blue light yellow light, follows bgm from nothing, weak to strong
+
+🌟 touch sensor / vibration sensor / physiological sensor + **sound** player, the strength of the size and different physiological characteristics (pulse) of the person's touch will lead to changes in the sound effects, simulating the sound of plants
+Sound effects: sound of water, wind, stepping on grass
+
+
+Demonstration with the class
+**portable thermohygrometer**, with a progress bar that changes colour to simulate how high the humidity is, the nutrient content, simulating the plant's sense of touch, lcd screen showing how high the temperature is, telling us the current state of the plant
+lcd screen: simulates the language of the plant, communication language language, visualised as a human display
+
+Temperature sensor, what temperature is right for the plant, -10-0 frozen; 0-5 cold; 5-10 gets better
+Humidity sensor, what is the right humidity for the plant, 0-50 too dry; 50-100 good; 100+ too damp
+Light sensor, how much light is right for the plant
+Display, corresponding to the temperature and humidity, temperature + humidity + light
+
+
+
+
+Video demonstration
+A leaf's journey
+bgm Thoughts across the millennia
+Synopsis: From midnight to the rising of the sun in the morning, a leaf unfolds.
+
+I want to tell a small but also a great story, the journey of a leaf
+
+The struggle before dawn, the cold, the display shows: I'm so thirsty, I'm so cold, what time is it?
+Longing for the sun to rise, lcd: I want the sun so badly, when will the sun come? I'm dying of cold, who's going to save me?I'm gonna die.....
+Struggling, lcd: ahhhhhhhhhhhhh, that's the sun! I feel like I'm coming back to life! I'm coming back to life! I'm trying really hard!!!
+Struggling to unfurl the leaves, sunlight pours down, lcd: Thank the world, I did it, I survived.
+The leaves greet the sun peacefully, video of the early morning sunlight penetrating the forest through the leaves
+
+Perhaps a few thousand years ago, a drop of dew on a leaf gave the first signs of life.
+
+
+
+inspiration
+Mankind originated from the forest, but nowadays we live in concrete and steel cities and have lost touch with the forest, which we know less and less about.
+
+Forests do not speak, they only provide shelter and gifts, and the size of the original forests is decreasing. So I want to make an installation that enhances communication between plants and humans. A call for everyone to protect it.
+
+
+
+Research has proven that every plant has its own characteristics and what it wants to say
+
+Anthropomorphising the forest, all life has struggled as much as you have.
+
+How can we reflect the changes in the forest and how it behaves as it interacts with people
+
+
+
+
+
+
+Possibilities.
+Environmentally related
+
+
+
+
+
+Reference inspiration
+https://www.bilibili.com/video/BV1GL411F7gS/?spm_id_from=333.788.recommend_more_video.0&vd_source=c12acd8b0900a7c3b5ad825c202c56c8
